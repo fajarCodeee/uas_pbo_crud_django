@@ -1,7 +1,8 @@
 # UAS - Laporan Analisis Sistem Todo-List Django
 
-| Nama         | : Fajar Bayu Timur |
+| ###### |  |
 |--------------|---------------|
+|Nama          | : Fajar Bayu Timur |
 | NIM          | : 32231003  |
 | Program Studi| : Teknik Informatika |
 | Semester     | : 3 (Tiga) |
