@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Detail Task - Todo App</title>
+
+    <style>
+        body {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Detail Task</h1>
+
+        <div>
+            <a href="{% url 'uas:index' %}" class="btn btn-success">Kembali ke Daftar</a>
+        </div>
+
+        <br>
+
+        <div>
+            <h2>{{ task.title }}</h2>
+            <h4>
+                <span class="badge badge-warning">{{ task.status }}</span>
+                <span class="badge badge-info">{{ task.category.name }}</span>
+            </h4>
+            <p>{{ task.description }}</p>
+
+            <hr>
+
+            <h3>Komentar</h3>
+            <a href="{% url 'uas:comment_create' task.id %}" class="btn btn-primary mb-3">Tambah Komentar</a>
+
+            {% if task.comments.all %}
+            {% for comment in task.comments.all %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="card-text">{{ comment.content }}</p>
+                    <p class="card-text"><small class="text-muted">{{ comment.created_at }}</small></p>
+                    <a href="{% url 'uas:comment_update' comment.id %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'uas:comment_delete' comment.id %}" class="btn btn-sm btn-danger"
+                        onclick="return confirm('Hapus komentar ini?')">Hapus</a>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>Belum ada komentar.</p>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+
+</html>
